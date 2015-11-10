@@ -1,50 +1,74 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Calculo de IMC</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body style="background-color:#e1f5fe;">
+	<!--login modal-->
+	<div id="loginModal" class="modal show" tabindex="-1" role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="text-center">Calculo de IMC</h1>
+				</div>
+				<div class="modal-body">
+					<form class="form col-md-12 center-block">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="Peso" name="peso">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="Altura" name="altura">
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg btn-block">Calcular</button>
+							<span style="text-align:center; font-size: 15px; font-weight: bold; line-height: 60px;"> <%
+  			String pamAltura = request.getParameter("altura");
+  			pamAltura = pamAltura == null ? "0" : pamAltura;
+  			double altura = Double.parseDouble(pamAltura);
+  			String pamPeso = request.getParameter("peso");
+  			pamPeso = pamPeso == null ? "0" : pamPeso;
+  			double peso = Double.parseDouble(pamPeso);
+  			long resultado = Math.round(new Double(peso / (altura*altura)));		
+  			
+  			out.print("Você está ");
+  			
+  			if(resultado < 17) {
+  				out.print("muito abaixo do peso. (IMC = "+resultado+")");
+  			} else if (resultado >= 17 && resultado <= 18.49) {
+  				out.print("abaixo do peso. (IMC = "+resultado+")");
+  			} else if (resultado >= 18.50 && resultado <= 24.99) {
+  				out.print("com peso normal. (IMC = "+resultado+")");
+  			} else if (resultado >= 25 && resultado <= 29.99) {
+  				out.print("acima do peso. (IMC = "+resultado+")");
+  			} else {
+  				out.print("obeso. (IMC = "+resultado+")");
+  			}
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
-    </head>
-
-    <body>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-<h1 class="center">
- Cálculo Massa Corpórea
-</h1>
-
-<div class="container">
-        <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Digite seu peso em Quilogramas" id="first_name" type="text" class="validate">
-          <label for=>Entre com seu peso</label>
-        </div>
-       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Digite sua altura" id="first_name" type="text" class="validate">
-          <label for=>Entre com sua Altura em metros</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Seu índice Corporal é:" id="first_name" type="text" class="validate">
-          <label for=>Seu índice Corporal é:</label>
-        </div>
-      </div>
-     </form>
-  </div>
-      </div>
-
-	  
-
-
+              %>
+							</span>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+	<!-- script references -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
-  </html>
+</html>
