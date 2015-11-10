@@ -34,7 +34,7 @@
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary btn-lg btn-block">Calcular</button>
-							<span style="text-align:center; font-size: 15px; font-weight: bold; line-height: 60px;"> <%
+							<span style="text-align:center; font-size: 22px; font-weight: bold; line-height: 60px; margin-left: 12.5%;"> <%
   			String pamAltura = request.getParameter("altura");
   			pamAltura = pamAltura == null ? "0" : pamAltura;
   			double altura = Double.parseDouble(pamAltura);
